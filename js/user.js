@@ -1,11 +1,12 @@
 $(document).ready(function() {
 
+
+
     var userListBody = $('.userList tbody');
 
     //@todo store and somehow update the current number of users
 
-
-    $('.needs-validation').submit(function(event) {
+    $('.needs-validation').submit(function (event) {
 
         event.preventDefault();
         event.stopPropagation();
@@ -27,20 +28,36 @@ $(document).ready(function() {
 
         //your code follows here
 
+
+        // GOOGLE bester Freund vom Bene
+
+        var username_element = document.getElementById('username');
+        var username = username_element.value;
+        userListBody.push(username);
+        var currentLength = userListBody.length;
+
+        var table = document.getElementById('table');
+        var row = table.insertRow(-1);
+
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+
+        cell1.innerHTML = currentLength;
+        cell2.innerHTML = username;
+        cell3.innerHTML = "<button type=\"button\" class=\"btn btn-secondary btn-danger deleteTrigger\" title=\"Löschen\"><i class=\"fa fa-trash\"></i></button>";
+
+        userZaehler ++;
         return false;
     });
 
-
-    $('.deleteTrigger').click(function() {
-        //@todo
-        //1. remove current user from dom
-        //2. update number of current users
-
-        //your code follows here
-
+    $(userListBody).on('click', '.deleteTrigger', function(){
+        $(this).closest('tr').remove();
 
     });
-
     //maybe some code follows here
+
+    // nichts gefunden bzw nicht drauf gekommen was hier noch stehen könnte
+
 
 });
